@@ -25,7 +25,11 @@ var global={
      enemySize: 50, // 默认敌人的尺寸
      enemyGap: 10,  // 默认敌人之间的间距
      enemyIcon: './img/enemy.png', // 怪兽的图像
+     enemyIconImage:'',
+
      enemyBoomIcon: './img/boom.png', // 怪兽死亡的图像
+     enemyBoomIconImage:'',
+
      enemyDirection: 'right', // 默认敌人一开始往右移动
      planeSpeed: 7, // 默认飞机每一步移动的距离
      planeSize: {
@@ -33,6 +37,8 @@ var global={
        height: 100
      }, // 默认飞机的尺寸,
      planeIcon: './img/plane.png',
+     planeIconImage:'',
+     
      score:0,    //游戏得分
      
      plane:{},

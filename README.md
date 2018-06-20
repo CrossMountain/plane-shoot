@@ -1,4 +1,4 @@
-在线试玩:https://crossmountain.github.io
+在线试玩:https://crossmountain.github.io/plane-shoot/
 
 利用canvas实现,方向键左右移动飞机,空格键发射子弹!
 

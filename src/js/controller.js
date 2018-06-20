@@ -2,12 +2,11 @@ import {global} from './global'
 import {Plane} from './plane' 
 import {Bullet} from './bullet'
 import {Monster} from './monster'
-import {checkRectCollision} from './util'
+import {util} from './util'
 
 const context=global.context
 const canvasWidth=global.canvasWidth
 const canvasHeight=global.canvasHeight
-
 
 var plane={}
 var bullets=[]
@@ -19,11 +18,30 @@ var rAF  // requestAnimationFrame 句柄
 
 var Controller={}  //控制层对象
 
+Controller.loadResource=function(callback){
+    var resouces=[
+        global.enemyIcon,
+        global.enemyBoomIcon,
+        global.planeIcon
+    ]
+    util.resourceOnload(resouces,(images)=>{
+
+        global.enemyIconImage=images[0]
+        global.enemyBoomIconImage=images[1]
+        global.planeIconImage=images[2]
+        callback()
+    })
+
+}
+
 Controller.init=function(){
     score=0    //当前关卡初始分数为0
 
     global.plane=new Plane()   //新建
+
     plane=global.plane
+    plane.init()
+
     bullets=[]
     monsters=[]
 
@@ -75,6 +93,7 @@ Controller.gameLoop=function(){
     //绘制分数
     Controller.drawScore()
 
+    //绘制飞机
     plane.drawPlane()   
     plane.move()
 
@@ -94,7 +113,7 @@ Controller.gameLoop=function(){
             reachDownFlag=true
             break
         }else{ //检测是否有一个怪兽碰边
-            monsters[i].drawMonster()
+            monsters[i].draw()
             monsters[i].moveHorizontal()  //水平移动
             if(monsters[i].checkTouchEdge()){
                 downFlag=true
@@ -119,11 +138,11 @@ Controller.gameLoop=function(){
     
     //子弹和怪兽的碰撞检测
     for (let j = 0; j < monsters.length; j++) { //遍历怪兽数组
-        monsters[j].drawDeadMonster()  //绘制死亡界面
+        monsters[j].draw()  //绘制死亡界面
         for (let i = 0; i < bullets.length; i++) { //遍历子弹数组
             if (bullets[i] && bullets[i].isAlive) { //只对活着的子弹做操作                
                 if (monsters[j].isAlive) { //只对活着的怪兽操作
-                    if (checkRectCollision(bullets[i], monsters[j], 10)) {
+                    if (util.checkRectCollision(bullets[i], monsters[j], 10)) {
                         bullets[i].die()
                         monsters[j].die()
                         score++ //分数加1
@@ -169,7 +188,7 @@ Controller.keyResponse=function(){
             plane.toRight=false
         }else if(key===32){
             var b=new Bullet()  //生成子弹
-            b.born()
+            b.init()
             bullets.push(b)
         }
     })

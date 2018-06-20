@@ -1,23 +1,24 @@
 import {global} from './global'
+import Element from './Element'
 
 const context=global.context
 
-class Bullet{
+class Bullet extends Element{
     constructor(){
-        this.x=global.plane.x+global.plane.width*0.5
-        this.y=global.plane.y-global.bulletSize
+        super()
         this.isAlive=false
+        Bullet.prototype.width=1
+        Bullet.prototype.height=global.bulletSize
     }
     init(){
-        this.isAlive=false
+        this.x=global.plane.x+global.plane.width*0.5
+        this.y=global.plane.y-global.bulletSize
+        this.isAlive=true
     }
     move(){
         if(this.y>=30&&this.isAlive===true){
-            this.y=this.y-global.bulletSpeed
+            this.moveElement(0,-global.bulletSpeed)
         }
-    }
-    born(){
-        this.isAlive=true
     }
     checkDie(){
         if(this.y<30){
@@ -39,7 +40,6 @@ class Bullet{
         
     }
 }
-Bullet.prototype.width=1
-Bullet.prototype.height=global.bulletSize
+
 
 export{Bullet} 
