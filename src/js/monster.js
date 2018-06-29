@@ -16,11 +16,16 @@ class Monster extends Element {
         this.direction = global.enemyDirection; //移动方向
         this.deadFrame = 3 //死亡帧数
 
+
+
         Monster.prototype.width = global.enemySize;
         Monster.prototype.height = global.enemySize;
         Monster.prototype.imgAlive = global.enemyIconImage;
         Monster.prototype.imgDead = global.enemyBoomIconImage;
         Monster.prototype.speed = global.enemySpeed
+        
+        //底线,加的值是为了怪兽跑到最后一行
+        Monster.prototype.bottom=global.canvasHeight-global.canvasPadding-global.planeSize.height-global.enemySize+15
     }
     init(x, y) {
         this.x = x
@@ -37,7 +42,8 @@ class Monster extends Element {
     }
     checkReachBottom() {
         if (!this.isAlive) return false //死了就不检测碰边
-        if (this.y > 470) return true
+
+        if (this.y > this.bottom) return true
     }
     changeDirection() {
         if (!this.isAlive) return

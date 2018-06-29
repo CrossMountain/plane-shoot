@@ -28,7 +28,7 @@ class Bullet extends Element{
     die(){
         this.isAlive=false
     }
-    drawBullet(){
+    draw(){
         if(this.isAlive){
             context.beginPath()
             context.strokeStyle='#fff'  //不设置颜色会看不见！

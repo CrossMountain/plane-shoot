@@ -23,6 +23,8 @@ class Plane extends Element {
 
         this.toLeft = false
         this.toRight = false
+
+        this.target = 0 //目标位置位置
     }
     init() {
         this.x = canvasWidth * 0.5 - global.planeSize.width * 0.5
@@ -32,11 +34,11 @@ class Plane extends Element {
         this.scope = global.canvasPadding //移动范围
     }
     move() {
-        if (this.toLeft) {
+        if (this.toLeft && this.x > this.target-this.width/2) {   //移动至中心
             if (this.x >= this.scope) {
                 this.moveElement(-this.speed, 0)
             }
-        } else if (this.toRight) {
+        } else if (this.toRight && this.x < this.target-this.width/2) {
             if (this.x <= (canvasWidth - this.width - this.scope)) {
                 this.moveElement(this.speed, 0)
             }

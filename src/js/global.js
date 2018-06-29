@@ -2,6 +2,11 @@ var container = document.getElementById('game');
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
+//设置实际宽高
+var style=window.getComputedStyle(canvas,"")   
+canvas.width=parseInt(style.width) 
+canvas.height=parseInt(style.height) 
+
 var  playBtn=document.querySelector('.js-play')
 var  nextLevelBtn=document.querySelector('.js-next')
 var  replayBtn=document.querySelectorAll('.js-replay')
@@ -9,6 +14,7 @@ var  scoreHTML=document.querySelector('.score')
 
 
 var global={
+     canvas:canvas,
      context:context, 
      container:container,
      canvasWidth:canvas.width,
@@ -41,7 +47,7 @@ var global={
      
      score:0,    //游戏得分
      
-     plane:{},
+     plane:{},   //飞机
      
      playBtn:playBtn,
      nextLevelBtn:nextLevelBtn,
