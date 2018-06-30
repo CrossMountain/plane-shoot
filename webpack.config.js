@@ -55,7 +55,7 @@ module.exports={
         }
         ),
         new CopyWebpackPlugin([
-      		{from:'./src/img',to:'./img'}
+      		{from:'./src/img',to:'./img'},
       	]),
 
         new ExtractTextPlugin("style.css"),

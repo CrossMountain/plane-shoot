@@ -94,6 +94,8 @@ Controller.bindEvent = function() {
     var timer
     var timerID
 
+    var timerArr = [] //存放ID的数组
+
     timer = function(ms) {
         timerID = setTimeout(function() {
             var b = new Bullet() //生成子弹
@@ -102,6 +104,7 @@ Controller.bindEvent = function() {
 
             timer(ms)
         }, ms)
+        timerArr.push(timerID)
     }
 
     function handleStart(e) {
@@ -110,11 +113,19 @@ Controller.bindEvent = function() {
     }
 
     function handleEnd(e) {
-        clearTimeout(timerID)
+        timerArr.forEach((item) => {
+            clearTimeout(item)
+        })
+        // clearTimeout(timerID)
+        timerArr = []
     }
 
-    function handleCancel(e){  //取消
-        clearTimeout(timerID)
+    function handleCancel(e) { //取消
+        timerArr.forEach((item) => {
+            clearTimeout(item)
+        })
+        // clearTimeout(timerID)
+        timerArr = []
     }
 
     //性能性化
@@ -274,8 +285,8 @@ Controller.drawScore = function() {
     context.fillStyle = '#fff'
     context.font = '20px 黑体'
     context.fillText('关卡:' + global.level, 0, 20)
-    context.fillText('得分:' + score, 200*global.scaleWidth, 20)
-    context.fillText('总分:' + global.score, 400*global.scaleWidth, 20)
+    context.fillText('得分:' + score, 200 * global.scaleWidth, 20)
+    context.fillText('总分:' + global.score, 400 * global.scaleWidth, 20)
 }
 
 export {
