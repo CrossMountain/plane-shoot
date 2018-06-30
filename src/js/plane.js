@@ -28,8 +28,12 @@ class Plane extends Element {
     }
     init() {
         this.x = canvasWidth * 0.5 - global.planeSize.width * 0.5
-        this.y = canvasHeight - global.planeSize.height
 
+        if(global.scaleHeight<=1){
+            this.y=global.canvasDefaultHeight*global.scaleHeight-global.planeSize.height
+        }else{
+            this.y=global.canvasDefaultHeight*0.5
+        }
         this.img = global.planeIconImage
         this.scope = global.canvasPadding //移动范围
     }

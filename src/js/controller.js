@@ -273,9 +273,9 @@ Controller.keyResponse = function() {
 Controller.drawScore = function() {
     context.fillStyle = '#fff'
     context.font = '20px 黑体'
-    context.fillText('当前关卡:' + global.level, 0, 20)
-    context.fillText('得分:' + score, 200*global.scale, 20)
-    context.fillText('总分:' + global.score, 400*global.scale, 20)
+    context.fillText('关卡:' + global.level, 0, 20)
+    context.fillText('得分:' + score, 200*global.scaleWidth, 20)
+    context.fillText('总分:' + global.score, 400*global.scaleWidth, 20)
 }
 
 export {
