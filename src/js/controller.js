@@ -89,7 +89,7 @@ Controller.bindEvent = function() {
     global.container.addEventListener("touchstart", handleStart, false);
     global.container.addEventListener("touchend", handleEnd, false);
     global.container.addEventListener("touchmove", handleMove, false);
-
+    global.container.addEventListener("touchcancel", handleCancel, false);
 
     var timer
     var timerID
@@ -110,6 +110,10 @@ Controller.bindEvent = function() {
     }
 
     function handleEnd(e) {
+        clearTimeout(timerID)
+    }
+
+    function handleCancel(e){  //取消
         clearTimeout(timerID)
     }
 
@@ -140,6 +144,7 @@ Controller.bindEvent = function() {
             }
         }, 10)
     }
+
 }
 
 Controller.play = function() {
