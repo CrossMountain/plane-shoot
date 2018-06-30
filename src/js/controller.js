@@ -64,6 +64,10 @@ Controller.init = function() {
     }
 }
 Controller.bindEvent = function() {
+    window.addEventListener('contextmenu', function(e){
+        e.preventDefault();
+    });
+    
     global.container.addEventListener('click', (e) => { //事件委托
         let target = e.target
         if (target) {
