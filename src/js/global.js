@@ -24,6 +24,8 @@ var global={
      canvasWidth:canvas.width,
      canvasHeight:canvas.height,
 
+     scale:scale,//比例缩放
+
      status: 'start', // 游戏开始默认为开始中
      level: 1, // 游戏默认等级
      totalLevel: 4, // 总共4关
