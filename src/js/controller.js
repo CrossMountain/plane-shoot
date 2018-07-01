@@ -77,7 +77,7 @@ Controller.bindEvent = function() {
                 this.gameLoop()
             } else if (target === global.nextLevelBtn) {
                 global.level++ //下一关
-                    this.init()
+                this.init()
                 this.play()
                 this.gameLoop()
             } else if (target === global.replayBtn[0] || target === global.replayBtn[1]) {
@@ -109,6 +109,7 @@ Controller.bindEvent = function() {
             timer(ms)
         }, ms)
         timerArr.push(timerID)
+        // console.log(timerArr.length)
     }
 
     function handleStart(e) {
