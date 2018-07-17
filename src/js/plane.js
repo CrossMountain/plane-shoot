@@ -29,20 +29,20 @@ class Plane extends Element {
     init() {
         this.x = canvasWidth * 0.5 - global.planeSize.width * 0.5
 
-        if(global.scaleHeight<=1){
-            this.y=global.canvasDefaultHeight*global.scaleHeight-global.planeSize.height
-        }else{
-            this.y=global.canvasDefaultHeight*0.5
+        if (global.scaleHeight <= 1) {
+            this.y = global.canvasDefaultHeight * global.scaleHeight - global.planeSize.height
+        } else {
+            this.y = global.canvasDefaultHeight * 0.5
         }
         this.img = global.planeIconImage
         this.scope = global.canvasPadding //移动范围
     }
     move() {
-        if (this.toLeft && this.x > this.target-this.width/2) {   //移动至中心
+        if (this.toLeft && this.x > this.target - this.width / 2) { //移动至中心
             if (this.x >= this.scope) {
                 this.moveElement(-this.speed, 0)
             }
-        } else if (this.toRight && this.x < this.target-this.width/2) {
+        } else if (this.toRight && this.x < this.target - this.width / 2) {
             if (this.x <= (canvasWidth - this.width - this.scope)) {
                 this.moveElement(this.speed, 0)
             }

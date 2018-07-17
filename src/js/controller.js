@@ -64,10 +64,10 @@ Controller.init = function() {
     }
 }
 Controller.bindEvent = function() {
-    window.addEventListener('contextmenu', function(e){
+    window.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
-    
+
     global.container.addEventListener('click', (e) => { //事件委托
         let target = e.target
         if (target) {
@@ -77,7 +77,7 @@ Controller.bindEvent = function() {
                 this.gameLoop()
             } else if (target === global.nextLevelBtn) {
                 global.level++ //下一关
-                this.init()
+                    this.init()
                 this.play()
                 this.gameLoop()
             } else if (target === global.replayBtn[0] || target === global.replayBtn[1]) {

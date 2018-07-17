@@ -23,9 +23,9 @@ class Monster extends Element {
         Monster.prototype.imgAlive = global.enemyIconImage;
         Monster.prototype.imgDead = global.enemyBoomIconImage;
         Monster.prototype.speed = global.enemySpeed
-        
+
         //底线,加的值是为了怪兽跑到最后一行
-        Monster.prototype.bottom=global.plane.y-this.height-5
+        Monster.prototype.bottom = global.plane.y - this.height - 5
     }
     init(x, y) {
         this.x = x

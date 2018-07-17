@@ -37,18 +37,18 @@ function checkRectHorizontal(obj1, obj2, distance) {
     if ((obj2.x - obj1.x - obj1.width) <= distance) return true
 }
 
-function resourceOnload(resources,callback){
-    var total=resources.length
-    var finish=0
-    var images=[]
+function resourceOnload(resources, callback) {
+    var total = resources.length
+    var finish = 0
+    var images = []
 
-    resources.forEach((item,index)=>{
-        images[index]=new Image()
-        images[index].src=item
+    resources.forEach((item, index) => {
+        images[index] = new Image()
+        images[index].src = item
 
-        images[index].onload=()=>{
+        images[index].onload = () => {
             finish++
-            if(finish===total){
+            if (finish === total) {
                 callback(images)
             }
         }
@@ -57,7 +57,7 @@ function resourceOnload(resources,callback){
 
 }
 
-export const util={
+export const util = {
     checkRectCollision,
     resourceOnload,
 }

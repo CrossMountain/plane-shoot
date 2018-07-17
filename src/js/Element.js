@@ -1,5 +1,5 @@
 class Element {
-    constructor(obj={}) {
+    constructor(obj = {}) {
         this.x = obj.x
         this.y = obj.y
     }
@@ -10,4 +10,3 @@ class Element {
 }
 
 export default Element
-
